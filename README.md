@@ -1,5 +1,15 @@
 # Dewe Tour - Fullstack Beginner Level
 
+## Setup Project
+
+1. Clone repository ini
+
+```bash
+git clone <repository-url>
+```
+
+2. Setelah clone akan terlihat 2 folder yaitu frontend dan backend. Silahkan mulai dari salah satu folder tersebut dan baca README.md untuk petunjuk instalasi
+
 ## Tugas
 
 Buatlah aplikasi website end-to-end sesuai dengan desain yang telah disediakan di atas. Pastikan:
@@ -7,7 +17,7 @@ Buatlah aplikasi website end-to-end sesuai dengan desain yang telah disediakan d
 - Frontend dibuat sesuai desain.
 - Backend dibuat untuk memenuhi kebutuhan data aplikasi.
 
-> **Maksimal waktu pengerjaan: 3 hari (termasuk frontend dan backend).**
+> **Maksimal waktu pengerjaan adalah 7 hari (termasuk frontend dan backend).**
 
 ### Yang Perlu Dilakukan
 
