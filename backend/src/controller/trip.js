@@ -1,30 +1,75 @@
 // data yang akan di gunakan untuk edit, tambah, ataupun hapus
-const TRIPS = [
-  {
-    title: "6D/4N Fun Tassie Vacation + Sydney",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-    image:
-      "https://res.cloudinary.com/dmegegwqb/image/upload/v1638670749/trip-default-dewetour/sydney_p4d1w2.jpg",
-    //   cobalah lengkapi sesuai dengan kebutuhan di desain
+const TRIPS = require("../models"); //menggunakan data yang ada di database 
+module.exports = {
+  getAllTrips: async (req, res) => {
+    try {
+      const data = await TRIPS.find({});
+      res.status(200).json({
+        message: "Successfully got all trips",
+        data,
+      });
+    } catch (error) {
+      res.status(500).json({ message: "Error getting trips", error });
+    }
   },
-];
 
-exports.getTrips = async (req, res) => {
-  try {
-    const data = TRIPS;
+  getTripById: async (req, res) => {
+    try {
+      const data = await TRIPS.findById(req.params.id);
+      if (!data) return res.status(404).json({ message: "Trip not found." });
+      res.status(200).json({
+        message: "Successfully got trip by id",
+        data,
+      });
+    } catch (error) {
+      res.status(500).json({ message: "Error getting trip by id", error });
+    }
+  },
 
-    res.send({});
-  } catch (error) {
-    res.status(500).send({
-      status: "failed",
-      message: "Internal Server error",
-    });
+  addTrips: async (req, res) => {
+    try {
+      const newTrip = new TRIPS(req.body);
+      await newTrip.save();
+      res.status(201).json({
+        message: "Trip successfully added",
+      });
+    } catch (error) {
+      res.status(500).json({ message: "Error adding trip", error });
+    }
+  },
+
+
+  editTripById: async (req, res) => {
+    try {
+      const data = await TRIPS.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true, });
+      res.status(201).json({
+        message: "Trip successfully updated",
+        data: data,
+      })
+    } catch (error) {
+      res.status(400).json({
+        status: "Error",
+        message: "Error updating trip",
+      })
+    }
+  },
+
+  deleteTripById: async (req, res) => {
+
+    const { id } = req.params;
+    try {
+      await TRIPS.findByIdAndDelete(req.params.id);
+      res.status(200).json({
+        status: "Success",
+        message: "Trip successfully deleted"
+      });
+    } catch (error) {
+      res.status(400).json({
+        status: "Error",
+        message: "Error deleting trip",
+      })
+
+    }
+
   }
 };
-
-exports.detailTrip = async (req, res) => {
-  // kode delete trip disini
-};
-
-// lanjutkan untuk add dan delete
