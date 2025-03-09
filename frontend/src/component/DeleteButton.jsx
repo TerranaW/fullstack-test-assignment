@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const DeleteTripButton = () => {
-    const { id } = useParams(); // Ambil ID dari URL
+    const { id } = useParams();
     const navigate = useNavigate();
 
     const handleDelete = async () => {
@@ -35,12 +35,21 @@ const DeleteTripButton = () => {
 
     return (
         <button
-            className="mt-3 w-100 text-white rounded-1 shadow-none p-1"
-            style={{ backgroundColor: "#FF6200", borderColor: "#FF6200" }}
             onClick={handleDelete}
+            className="mt-3 w-100 rounded-1 shadow-none p-1"
+            style={{
+                backgroundColor: "#FF6200",
+                borderColor: "#FF6200",
+                color: "white",
+                transition: "all 0.3s ease",
+                cursor: "pointer",
+            }}
+            onMouseOver={(e) => (e.target.style = "background-color: white; color: #FF6200; border-color: #FF6200;")}
+            onMouseOut={(e) => (e.target.style = "background-color: #FF6200; color: white; border-color: #FF6200;")}
         >
             <strong>Delete Trip</strong>
         </button>
+
     );
 };
 

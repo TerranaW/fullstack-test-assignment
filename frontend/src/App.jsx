@@ -3,6 +3,7 @@ import Home from "./pages/Home/index";
 import AddTrip from "./pages/AddTrip/index";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DetailTrip from "./pages/DetailTrip/index"
+import Footer from "./component/Footer";
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/trip/:id" element={<DetailTrip />} />
         {/* lanjutkan */}
       </Routes>
+      <Footer />
 
     </>
   );

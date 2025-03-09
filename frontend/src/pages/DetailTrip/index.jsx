@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { FaHotel, FaPlane, FaUtensils, FaClock, FaCalendarAlt } from "react-icons/fa";
 import DeleteTripButton from "../../component/DeleteButton";
 
+
 export async function fetchTripsById(id) {
     try {
         let endpoint = `https://organisational-swift-flowy-64f7bee4.koyeb.app/${id}`;
@@ -107,7 +108,9 @@ function DetailTrip() {
             <DeleteTripButton></DeleteTripButton>
 
         </Container>
+
     );
+
 }
 
 export default DetailTrip;

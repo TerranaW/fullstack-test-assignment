@@ -4,6 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
+
 const AddTrip = () => {
   const navigate = useNavigate();
 
@@ -222,7 +223,9 @@ const AddTrip = () => {
         </Button>
       </Form>
     </Container>
+
   );
+
 };
 
 export default AddTrip;
