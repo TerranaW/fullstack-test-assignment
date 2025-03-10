@@ -34,8 +34,8 @@ const TripCards = () => {
   return (
     <Container className='p-5'>
       <div className="d-flex justify-content-between align-items-center mt-auto mb-3">
-        <h1>Income Trip</h1>
-        <Button onClick={AddTrip}>Add Trip</Button>
+        <h1 className='fw-bold'>Income Trip</h1>
+        <Button onClick={AddTrip} className='bg-warning text-white fw-bold border-warning' style={{ width: "15%" }}>Add Trip</Button>
       </div>
       <Row>
         {Array.isArray(trips) && trips.length > 0 ? (

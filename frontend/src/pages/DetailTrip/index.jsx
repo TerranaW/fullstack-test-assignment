@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Container, Button, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
@@ -50,7 +50,7 @@ function DetailTrip() {
             <Row className="text-center justify-content-between align-items-start mb-2">
                 {/* Accommodation */}
                 <Col xs={12} sm={2} className="d-flex flex-column align-items-start gap-1">
-                    <small className="text-muted">Accommodation</small>
+                    <small className="text-muted ">Accommodation</small>
                     <div className="d-flex align-items-center gap-2 text-nowrap">
                         <FaHotel size={20} className="text-dark" />
                         <span className="fw-bold">Hotel {trip?.night} Nights</span>
@@ -103,7 +103,7 @@ function DetailTrip() {
             <p className="fw-bold">Description</p>
             <p>{trip?.description}</p>
 
-            <h3 className="text-warning fw-bold">IDR. {trip?.price?.toLocaleString()} / Person</h3>
+            <h3 className="text-warning fw-bold">IDR. {trip?.price?.toLocaleString()} <span className="text-black"> / Person</span> </h3>
 
             <DeleteTripButton></DeleteTripButton>
 
