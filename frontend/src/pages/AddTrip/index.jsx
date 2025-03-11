@@ -65,7 +65,7 @@ const AddTrip = () => {
     fetchCountries();
   }, []);
   return (
-    <Container className="d-flex justify-content-center align-items-center mb-2 fw-bold">
+    <Container className="d-flex justify-content-center align-items-center mb-2 fw-bold border-0">
       <Card style={{ width: "70%", height: "100", padding: "3rem" }}>
         <h2 className="mb-4 ">Add Trip</h2>
         <Form onSubmit={handleSubmit}>

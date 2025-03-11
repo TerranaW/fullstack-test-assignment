@@ -8,28 +8,43 @@ const DeleteTripButton = () => {
     const navigate = useNavigate();
 
     const handleDelete = async () => {
-        try {
-            await axios.delete(`https://organisational-swift-flowy-64f7bee4.koyeb.app/${id}`);
+        // Show confirmation alert
+        const result = await Swal.fire({
+            title: "Confirm Deletion",
+            text: "Are you sure you want to delete this trip?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            confirmButtonColor: "#FF6200",
+            cancelButtonColor: "#d33",
+        });
 
-            Swal.fire({
-                title: "Trip Deleted",
-                text: "The trip has been successfully deleted.",
-                icon: "success",
-                confirmButtonText: "View List Trip",
-                confirmButtonColor: "#FF6200",
-            }).then(() => {
-                navigate("/");
-            });
+        // If the user confirmed, proceed with deletion
+        if (result.isConfirmed) {
+            try {
+                await axios.delete(`https://organisational-swift-flowy-64f7bee4.koyeb.app/${id}`);
 
-        } catch (error) {
-            console.error("Error deleting trip:", error);
+                Swal.fire({
+                    title: "Trip Deleted",
+                    text: "The trip has been successfully deleted.",
+                    icon: "success",
+                    confirmButtonText: "View List Trip",
+                    confirmButtonColor: "#FF6200",
+                }).then(() => {
+                    navigate("/");
+                });
 
-            Swal.fire({
-                title: "Error",
-                text: "Failed to delete the trip.",
-                icon: "error",
-                confirmButtonText: "OK",
-            });
+            } catch (error) {
+                console.error("Error deleting trip:", error);
+
+                Swal.fire({
+                    title: "Error",
+                    text: "Failed to delete the trip.",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                });
+            }
         }
     };
 
@@ -49,7 +64,6 @@ const DeleteTripButton = () => {
         >
             <strong>Delete Trip</strong>
         </button>
-
     );
 };
 
