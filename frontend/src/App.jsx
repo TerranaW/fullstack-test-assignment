@@ -6,6 +6,8 @@ import Footer from "./component/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 
+
+
 const App = () => {
   return (
     <div className="d-flex flex-column min-vh-100">
@@ -14,6 +16,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/add-trip" element={<AddTrip />} />
           <Route path="/trip/:id" element={<DetailTrip />} />
+
         </Routes>
       </Container>
       <Footer />
